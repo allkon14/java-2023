@@ -1,7 +1,7 @@
 package edu.project1;
 
-import java.util.Scanner;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Hangman {
     static Scanner input;
@@ -19,11 +19,11 @@ public class Hangman {
         String word = (words[rand]);
         word = word.toLowerCase();
 
-        String star_word = word.replaceAll("[a-z]", "*");
+        String starWord = word.replaceAll("[a-z]", "*");
 
-        System.out.println("The word: " + star_word + "\n");
+        System.out.println("The word: " + starWord + "\n");
 
-        startGame(word, star_word);
+        startGame(word, starWord);
     }
 
     public static void startGame(String word, String star_word) {
