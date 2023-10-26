@@ -26,7 +26,7 @@ public class Hangman {
         startGame(word, starWord);
     }
 
-    public static void startGame(String word, String star_word) {
+    public static void startGame(String word, String starWord) {
         int mistakes = 0;
         String guess;
         char letter;
@@ -34,7 +34,7 @@ public class Hangman {
         StringBuilder guesses = new StringBuilder();
         boolean letterInWord;
 
-        while (mistakes < 5 && star_word.contains("*")) {
+        while (mistakes < 5 && starWord.contains("*")) {
             System.out.print("Guess a letter: ");
             guess = input.nextLine().toLowerCase();
             if (guess.length() > 1) {
@@ -64,15 +64,15 @@ public class Hangman {
                 System.out.print("\n");
 
                 for (int i = 0; i < word.length(); i++) {
-                    if (word.charAt(i) == letter && star_word.charAt(i) != letter) {
-                        star_word = star_word.substring(0, i) + letter + star_word.substring(i + 1);
+                    if (word.charAt(i) == letter && starWord.charAt(i) != letter) {
+                        starWord = starWord.substring(0, i) + letter + starWord.substring(i + 1);
                     }
                 }
             } else {
                 mistakes++;
                 System.out.println("Missed, mistake " + mistakes + " out of 5.\n");
             }
-            System.out.println("The word: " + star_word + "\n");
+            System.out.println("The word: " + starWord + "\n");
         }
 
         if (mistakes == 5) {
