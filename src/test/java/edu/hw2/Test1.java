@@ -32,7 +32,7 @@ public class Test1 {
         assertEquals(expectedResult, mul.evaluate());
 
         expectedResult = 0;
-        mul = new Expr.Multiplication(-998, 0);
+        mul = new Expr.Multiplication(998, 0);
         assertEquals(expectedResult, mul.evaluate());
     }
 
