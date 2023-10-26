@@ -6,8 +6,8 @@ import org.apache.logging.log4j.Logger;
 public class Task1 {
     private final static Logger LOGGER = LogManager.getLogger();
 
-    public static int minutesToSeconds(String time_str) {
-        var time = time_str.split(":");
+    public static int minutesToSeconds(String timeStr) {
+        var time = timeStr.split(":");
         if (time.length != 2) {
             return -1;
         } else {

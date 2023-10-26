@@ -16,16 +16,13 @@ public class Task8 {
         {-1, -2},
     };
 
-
     public static boolean isKnightTakes(int[][] board) {
         int board_len = board.length;
         for (int i = 0; i < board_len; i++) {
             for (int j = 0; j < board_len; j++) {
                 if (board[i][j] == 1) {
                     for (int k = 0; k < board_len; k++) {
-                        if (i + MOVES[k][0] > 0 &&
-                            i + MOVES[k][0] < board_len &&
-                            j + MOVES[k][1] > 0 &&
+                        if (i + MOVES[k][0] > 0 && i + MOVES[k][0] < board_len && j + MOVES[k][1] > 0 &&
                             j + MOVES[k][1] < board_len) {
                             if (board[i + MOVES[k][0]][j + MOVES[k][1]] == 1) {
                                 return false;

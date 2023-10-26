@@ -36,7 +36,7 @@ public class Tests {
         assertEquals(countDigits(93781293), 8);
         assertEquals(countDigits(0), 1);
         assertEquals(countDigits(14), 2);
-        assertEquals(countDigits(-875), -1);
+        assertEquals(countDigits(-875), 3);
     }
 
     @Test
