@@ -1,7 +1,7 @@
 package edu.hw3;
 
-import static edu.hw3.Task5.ContactBook.parseContacts;
 import static edu.hw3.Task1.atbash;
+import static edu.hw3.Task5.ContactBook.parseContacts;
 import static edu.hw3.Task2.clusterize;
 import static edu.hw3.Task3.freqDict;
 import static edu.hw3.Task4.convertToRoman;
