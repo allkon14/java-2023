@@ -3,9 +3,9 @@ package edu.hw1;
 import java.util.Arrays;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import lombok.extern.slf4j.Slf4j;
 
 public class Task6 {
+    private final static Logger LOGGER = LogManager.getLogger();
 
     public static int countK(int number, int... c) {
         int cnt = 0;
@@ -37,7 +37,6 @@ public class Task6 {
         }
     }
 
-    @Slf4j
     public static void main(String[] args) {
         LOGGER.info(countK(3524));
     }

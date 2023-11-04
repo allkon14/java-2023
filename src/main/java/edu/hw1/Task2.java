@@ -2,9 +2,9 @@ package edu.hw1;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import lombok.extern.slf4j.Slf4j;
 
 public class Task2 {
+    private static final Logger LOGGER = LogManager.getLogger();
 
     public static int countDigits(int num) {
         if (num == Integer.MIN_VALUE) {
@@ -22,7 +22,6 @@ public class Task2 {
         return r;
     }
 
-    @Slf4j
     public static void main(String[] args) {
         LOGGER.info(countDigits(424));
         LOGGER.info(countDigits(23413));

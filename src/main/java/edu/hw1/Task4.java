@@ -2,9 +2,9 @@ package edu.hw1;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import lombok.extern.slf4j.Slf4j;
 
 public class Task4 {
+    private final static Logger LOGGER = LogManager.getLogger();
 
     public static String fixString(String s) {
         int len_s = s.length();
@@ -19,7 +19,6 @@ public class Task4 {
         return res.toString();
     }
 
-    @Slf4j
     public static void main(String[] args) {
         LOGGER.info(fixString("123456"));
         LOGGER.info(fixString("1454568"));
