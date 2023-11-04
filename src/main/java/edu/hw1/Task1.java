@@ -2,9 +2,9 @@ package edu.hw1;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 
 public class Task1 {
-    private final static Logger LOGGER = LogManager.getLogger();
 
     public static int minutesToSeconds(String timeStr) {
         var time = timeStr.split(":");
@@ -27,6 +27,7 @@ public class Task1 {
         }
     }
 
+    @Slf4j
     public static void main(String[] args) {
         LOGGER.info(minutesToSeconds("one:zero"));
         LOGGER.info(minutesToSeconds("3:07"));

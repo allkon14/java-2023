@@ -9,7 +9,6 @@ public class Test1 {
     @Test
     @DisplayName("Проверка времени")
     void checkTime() {
-        //assertThat(evenNumbers);
         assertEquals(minutesToSeconds("44:56"), 44 * 60 + 56);
         assertEquals(minutesToSeconds("-2:00"), -1);
         assertEquals(minutesToSeconds("1:60"), -1);

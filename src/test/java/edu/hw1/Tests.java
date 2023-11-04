@@ -17,7 +17,6 @@ public class Tests {
     @Test
     @DisplayName("Проверка времени")
     void checkTask1() {
-        //assertThat(evenNumbers);
         assertEquals(minutesToSeconds("44:56"), 44 * 60 + 56);
         assertEquals(minutesToSeconds("444444:30"), 444444 * 60 + 30);
         assertEquals(minutesToSeconds("-2:00"), -1);
@@ -113,7 +112,7 @@ public class Tests {
                 {0, 0, 0, 0, 0, 1, 0, 1},
                 {1, 0, 0, 0, 1, 0, 1, 0},
                 {0, 0, 0, 1, 0, 1, 0, 1}}), false);
-            assertEquals(isKnightTakes(
+        assertEquals(isKnightTakes(
             new int[][] {
                 {0, 0, 0, 0, 1, 0, 0, 0},
                 {0, 0, 0, 0, 0, 1, 0, 0},

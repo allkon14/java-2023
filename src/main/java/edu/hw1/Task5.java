@@ -2,9 +2,9 @@ package edu.hw1;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 
 public class Task5 {
-    private final static Logger LOGGER = LogManager.getLogger();
 
     public static boolean isPalindromeDescendant(int num) {
         if (num < 10) {
@@ -29,12 +29,12 @@ public class Task5 {
             StringBuffer new_s = new StringBuffer();
             for (int i = 0; i < len_s; i += 2) {
                 new_s.append(Integer.parseInt("" + s.charAt(i)) + Integer.parseInt("" + s.charAt(i + 1)));
-//                LOGGER.info(new_s);
             }
             return isPalindromeDescendant(new_s.toString());
         }
     }
 
+    @Slf4j
     public static void main(String[] args) {
         LOGGER.info(isPalindromeDescendant(11211230));
     }
