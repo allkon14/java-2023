@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 public class Task1 {
     private static final Logger LOGGER = LogManager.getLogger();
+
     public static int minutesToSeconds(String timeStr) {
         var time = timeStr.split(":");
         if (time.length != 2) {
