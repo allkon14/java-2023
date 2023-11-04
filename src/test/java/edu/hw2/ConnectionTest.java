@@ -8,8 +8,10 @@ import edu.hw2.Task3.ConnectionManager;
 import edu.hw2.Task3.DefaultConnectionManager;
 import edu.hw2.Task3.FaultyConnection;
 import edu.hw2.Task3.FaultyConnectionManager;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
-public class TestsForTask3 {
+public class ConnectionTest {
     @Test
     @DisplayName("DefaultConnectionManager --> Connection interface implementation")
     void check_DefaultConnectionManager_getConnection() {
@@ -27,4 +29,16 @@ public class TestsForTask3 {
         Connection connection = connectionManager.getConnection();
         assertThat(connection).isInstanceOf(FaultyConnection.class);
     }
+
+    @ParameterizedTest(name = "Test {index} default connection manager must return faulty connection with probability {0}")
+    @ValueSource(doubles = {0.1, 0.2, 0.5, 0.7, 0.9, 1})
+    public void check_defaultConnectionManager(double chance) {
+        DefaultConnectionManager defaultConnectionManager = new DefaultConnectionManager(chance);
+        Connection connection;
+        do {
+            connection = defaultConnectionManager.getConnection();
+        }
+        while (!(connection instanceof FaultyConnection));
+    }
+
 }

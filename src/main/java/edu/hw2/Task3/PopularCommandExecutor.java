@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public final class PopularCommandExecutor {
+
     private final static Logger LOGGER = LogManager.getLogger();
 
     private final ConnectionManager manager;
@@ -15,7 +16,6 @@ public final class PopularCommandExecutor {
     }
 
     public void updatePackages() {
-
         tryExecute("apt update && apt upgrade -y");
     }
 

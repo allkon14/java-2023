@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class TestsForTask2 {
+public class SecondTaskTest {
 
     static Arguments[] rectangles() {
         return new Arguments[]{
