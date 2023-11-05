@@ -11,8 +11,6 @@ import java.util.TreeSet;
 import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-import static edu.hw4.Animal.Sex;
-import static edu.hw4.Animal.Type;
 
 public class Tasks {
     public Tasks() {
