@@ -14,6 +14,7 @@ public class DefaultConnectionManager implements ConnectionManager {
     public DefaultConnectionManager(double chance) {
         this.statusConnection = chance;
     }
+
     @Override
     public Connection getConnection() {
         if (rand.nextBoolean()) {
