@@ -13,7 +13,7 @@ public class CallingInfoTest {
         String className = callingInfo.className();
         String methodName = callingInfo.methodName();
 
-        assertThat(className).isEqualTo("edu.hw2.TestForTask4");
+        assertThat(className).isEqualTo("edu.hw2.CallingInfoTest");
         assertThat(methodName).isEqualTo("testCallingInfo");
     }
 }
