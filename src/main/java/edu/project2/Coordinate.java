@@ -1,8 +1,9 @@
 package edu.project2;
 
-public record Coordinate(int x, int y) {public enum Direction {
-    UP, DOWN, RIGHT, LEFT
-}
+public record Coordinate(int x, int y) {
+    public enum Direction {
+        UP, DOWN, RIGHT, LEFT
+    }
 
     Direction relation(Coordinate other) {
         Direction res = null;
