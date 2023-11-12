@@ -8,7 +8,7 @@ public final class Task8 {
     /* Напишите регулярные выражения для строк из алфавита {0, 1} */
     /* нечетной длины */
     public static boolean regex1(String str) {
-        return str.matches("^(0|1){2}((0(0|1))|(1(0|1)))*$");
+        return str.matches("^[01]([01]{2})*$");
     }
 
     /* начинается с 0 и имеет нечетную длину, или начинается с 1 и имеет четную длину */
@@ -28,12 +28,12 @@ public final class Task8 {
 
     /* каждый нечетный символ равен 1 */
     public static boolean regex5(String str) {
-        return str.matches("^((0|1){2}1)*$");
+        return str.matches("^1([01]1)*[01]?$");
     }
 
     /* содержит не менее двух 0 и не более одной 1 */
     public static boolean regex6(String str) {
-        return str.matches("^(1*0){2,}(1*)$");
+        return str.matches("^0*(010|100|001|00)0*$");
     }
 
     /* нет последовательных 1 */

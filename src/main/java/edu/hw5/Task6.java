@@ -4,10 +4,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Task6 {
-    public static boolean isSubstring(String S, String T) {
-        String regex = ".*" + Pattern.quote(S) + ".*";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(T);
+    public static boolean isSubstring(String input, String search) {
+        Pattern pattern = Pattern.compile(input);
+        Matcher matcher = pattern.matcher(search);
         return matcher.find();
     }
 }
