@@ -29,11 +29,9 @@ public class Task4 {
     }
 
     public static class MonteCarloPi {
-        private static AtomicLong insideCircle = new AtomicLong(0);
-        private static long totalPoints;
+        private static final AtomicLong insideCircle = new AtomicLong(0);
 
         public static double calculatePi(int numThreads, long numSimulations) {
-            totalPoints = numSimulations;
             insideCircle.set(0);
 
             Thread[] threads = new Thread[numThreads];
@@ -51,7 +49,7 @@ public class Task4 {
                 }
             }
 
-            double ratio = insideCircle.get() / (double) totalPoints;
+            double ratio = insideCircle.get() / (double) numSimulations;
 
             return 4 * ratio;
         }
@@ -71,11 +69,13 @@ public class Task4 {
         }
     }
 
-    private static final List<Integer> ITERATIONS = List.of(10_000_000, 100_000_000, 1_000_000_000);
-
     public static void main(String[] args) {
+        final List<Integer> ITERATIONS = List.of(10_000_000, 100_000_000, 1_000_000_000);
+
         System.out.printf("%-15s %-15s %-6s\n", "Value", "Difference", "Time");
+
         double[] timesSeq = new double[ITERATIONS.size()];
+
         for (int i = 0; i < ITERATIONS.size(); ++i) {
             int iters = ITERATIONS.get(i);
             long nanos1 = System.nanoTime();
@@ -95,11 +95,10 @@ public class Task4 {
             System.out.println("Среднее время ускорения для " + threads + " потоков: " + averageTime + " мс");
         }
 
-        int[] numSimulationsArr = {10000000, 100000000, 1000000000};
-        for (int simulations : numSimulationsArr) {
-            double pi = calculatePiSingleThread(simulations);
+        for (int iter : ITERATIONS) {
+            double pi = calculatePiSingleThread(iter);
             double error = Math.abs(Math.PI - pi);
-            System.out.println("Погрешность для " + simulations + " симуляций: " + error);
+            System.out.println("Погрешность для " + iter + " симуляций: " + error);
         }
     }
 
