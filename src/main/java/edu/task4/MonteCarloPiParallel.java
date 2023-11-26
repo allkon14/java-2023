@@ -4,10 +4,10 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class MonteCarloPiParallel {
-    private static final AtomicLong insideCircle = new AtomicLong(0);
+    private static final AtomicLong INSIDE_CIRCLE = new AtomicLong(0);
 
     public static double calculatePi(int numThreads, long numSimulations) {
-        insideCircle.set(0);
+        INSIDE_CIRCLE.set(0);
 
         Thread[] threads = new Thread[numThreads];
 
@@ -24,7 +24,7 @@ public class MonteCarloPiParallel {
             }
         }
 
-        double ratio = insideCircle.get() / (double) numSimulations;
+        double ratio = INSIDE_CIRCLE.get() / (double) numSimulations;
 
         return 4 * ratio;
     }
@@ -38,7 +38,7 @@ public class MonteCarloPiParallel {
             double distance = Math.sqrt(x * x + y * y);
 
             if (distance <= 1) {
-                insideCircle.incrementAndGet();
+                INSIDE_CIRCLE.incrementAndGet();
             }
         }
     }
