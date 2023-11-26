@@ -1,10 +1,6 @@
 package edu.task4;
 
-import edu.task4.MonteCarloPi;
-import edu.task4.MonteCarloPiParallel;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.concurrent.atomic.AtomicLong;
 
 public class Task4 {
     private Task4() {
