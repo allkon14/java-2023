@@ -12,9 +12,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class Project1Test {
-    @Test
-    @DisplayName("Проверка на задание пустого словаря")
-    void emptyDict() {
+    @Test @DisplayName("Проверка на задание пустого словаря") void emptyDict() {
         IllegalArgumentException thrown = assertThrows(
             IllegalArgumentException.class,
             () -> new Dictionary(new HashSet<>()),
@@ -24,9 +22,7 @@ public class Project1Test {
         assertThat(thrown.getMessage()).isEqualTo("Word dictionary cannot be empty");
     }
 
-    @Test
-    @DisplayName("Проверка на задание словаря с некорректными вхождениями")
-    void incorrectDict() {
+    @Test @DisplayName("Проверка на задание словаря с некорректными вхождениями") void incorrectDict() {
         IllegalArgumentException thrown = assertThrows(
             IllegalArgumentException.class,
             () -> new Dictionary(new HashSet<>(Set.of("good_word", ""))),
@@ -36,9 +32,7 @@ public class Project1Test {
         assertThat(thrown.getMessage()).isEqualTo("Dictionary cannot have empty words");
     }
 
-    @Test
-    @DisplayName("Передача пустого слова в GuessResolver")
-    void incorrectGuessResolverEntry() {
+    @Test @DisplayName("Передача пустого слова в GuessResolver") void incorrectGuessResolverEntry() {
         IllegalArgumentException thrown = assertThrows(
             IllegalArgumentException.class,
             () -> new GuessResolver("".toCharArray()),
@@ -49,22 +43,17 @@ public class Project1Test {
             "A guessed word cannot be empty.\nBetter use Dictionary object's getRandomWord() method");
     }
 
-    @Test
-    @DisplayName("Попытка задать игру с отрицательным числом ошибок")
-    void negativeNumberOfMistakesGame() {
+    @Test @DisplayName("Попытка задать игру с отрицательным числом ошибок") void negativeNumberOfMistakesGame() {
         IllegalArgumentException thrown = assertThrows(
             IllegalArgumentException.class,
             () -> new Game(new Dictionary(new HashSet<>(Set.of("test"))), -1, new ConsolePlayer()),
             "Expected Game constructor with negative number of mistakes to throw, but it didn't"
         );
 
-        assertThat(thrown.getMessage()).isEqualTo(
-            "The maximum number of mistakes should be positive or zero");
+        assertThat(thrown.getMessage()).isEqualTo("The maximum number of mistakes should be positive or zero");
     }
 
-    @Test
-    @DisplayName("Проверка на угадывание")
-    void goodAnswer() throws IOException {
+    @Test @DisplayName("Проверка на угадывание") void goodAnswer() throws IOException {
         var player = new MockPlayer();
         Game game = new Game(new Dictionary(new HashSet<>(Set.of("apple"))), 1, player);
         var guessList = new LinkedList<String>();
@@ -91,7 +80,9 @@ public class Project1Test {
             The word is: *pp**
             0 mistakes out of 1
             Guess a symbol:\s""");
-        expected.offer("You've left the game");
+        expected.offer("""
+            You've left the game
+            The word was: apple""");
 
         var response = new LinkedList<String>();
 
@@ -102,9 +93,7 @@ public class Project1Test {
         assertThat(response).isEqualTo(expected);
     }
 
-    @Test
-    @DisplayName("Проверка на неугадывание")
-    void badAnswer() throws IOException {
+    @Test @DisplayName("Проверка на неугадывание") void badAnswer() throws IOException {
         // given
         var player = new MockPlayer();
         Game game = new Game(new Dictionary(new HashSet<>(Set.of("apple"))), 1, player);
@@ -132,7 +121,9 @@ public class Project1Test {
             The word is: *****
             1 mistakes out of 1
             Guess a symbol:\s""");
-        expected.offer("You've left the game");
+        expected.offer("""
+        You've left the game
+        The word was: apple""");
 
         var response = new LinkedList<String>();
 
@@ -145,9 +136,7 @@ public class Project1Test {
         assertThat(response).isEqualTo(expected);
     }
 
-    @Test
-    @DisplayName("Проверка на дубликат")
-    void repeatedAnswer() throws IOException {
+    @Test @DisplayName("Проверка на дубликат") void repeatedAnswer() throws IOException {
         // given
         var player = new MockPlayer();
         Game game = new Game(new Dictionary(new HashSet<>(Set.of("apple"))), 1, player);
@@ -183,22 +172,20 @@ public class Project1Test {
             The word is: *pp**
             0 mistakes out of 1
             Guess a symbol:\s""");
-        expected.offer("You've left the game");
+        expected.offer("""
+            You've left the game
+            The word was: apple""");
 
         var response = new LinkedList<String>();
 
-        // when
         player.putMockGuesses(guessList);
         game.run();
         response = player.getMockOutput();
 
-        // then
         assertThat(response).isEqualTo(expected);
     }
 
-    @Test
-    @DisplayName("Проверка на некорректную строку")
-    void incorrectAnswer() throws IOException {
+    @Test @DisplayName("Проверка на некорректную строку") void incorrectAnswer() throws IOException {
         // given
         var player = new MockPlayer();
         Game game = new Game(new Dictionary(new HashSet<>(Set.of("apple"))), 1, player);
@@ -234,7 +221,9 @@ public class Project1Test {
             The word is: *pp**
             0 mistakes out of 1
             Guess a symbol:\s""");
-        expected.offer("You've left the game");
+        expected.offer("""
+            You've left the game
+            The word was: apple""");
 
         var response = new LinkedList<String>();
 
@@ -247,9 +236,7 @@ public class Project1Test {
         assertThat(response).isEqualTo(expected);
     }
 
-    @Test
-    @DisplayName("Проверка на выигрыш")
-    void win() throws IOException {
+    @Test @DisplayName("Проверка на выигрыш") void win() throws IOException {
         // given
         var player = new MockPlayer();
         Game game = new Game(new Dictionary(new HashSet<>(Set.of("apple"))), 1, player);
@@ -317,9 +304,7 @@ public class Project1Test {
         assertThat(response).isEqualTo(expected);
     }
 
-    @Test
-    @DisplayName("Проверка на проигрыш")
-    void loss() throws IOException {
+    @Test @DisplayName("Проверка на проигрыш") void loss() throws IOException {
         // given
         var player = new MockPlayer();
         Game game = new Game(new Dictionary(new HashSet<>(Set.of("apple"))), 1, player);
@@ -363,8 +348,10 @@ public class Project1Test {
             The word is: app**
             1 mistakes out of 1
             Guess a symbol:\s""");
-        expected.offer("you lost ...\n"
-            + "Better luck next time!");
+        expected.offer("""
+        you lost ...
+        The word was: apple
+        Better luck next time!""");
 
         var response = new LinkedList<String>();
 
