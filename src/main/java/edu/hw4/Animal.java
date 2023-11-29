@@ -1,5 +1,8 @@
 package edu.hw4;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public record Animal(
     String name,
     Type type,

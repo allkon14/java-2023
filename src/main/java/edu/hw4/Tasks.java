@@ -1,7 +1,6 @@
 package edu.hw4;
 
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -107,7 +106,7 @@ public class Tasks {
     // task 13: Список животных, имена которых состоят из более чем двух слов -> List<Animal>
     public List<Animal> getAnimalWhichHaveNameMoreTwoWords(List<Animal> animals) {
         return animals.stream()
-            .filter(animal -> animal.name().split(" ").length >= 2)
+            .filter(animal -> animal.name().split(" ").length > 2)
             .toList();
     }
 
@@ -128,10 +127,10 @@ public class Tasks {
     // затем по имени -> List<Animal>
     public List<Animal> sortByTypeSexName(List<Animal> animals) {
         return animals.stream()
-            .sorted(Comparator.comparing(Animal::type)
+                .sorted(Comparator.comparing(Animal::type)
                 .thenComparing(Animal::sex)
                 .thenComparing(Animal::name))
-            .toList();
+                .toList();
     }
 
     // task 17: Правда ли, что пауки кусаются чаще, чем собаки -> Boolean
@@ -166,16 +165,7 @@ public class Tasks {
 
     // task 19: Животные, в записях о которых есть ошибки:
     // вернуть имя и список ошибок -> Map<String, Set<ValidationError>>.
-    public final Map<String, Set<ValidationError>> findAnimalsWithErrors(List<Animal> animals) {
-        Map<String, Set<ValidationError>> animalsWithErrors = new HashMap<>();
-
-        for (Animal animal : animals) {
-            Set<ValidationError> errors = validateAnimal(animal);
-            if (!errors.isEmpty()) {
-                animalsWithErrors.put(animal.name(), errors);
-            }
-        }
-
+    public Map<String, Set<ValidationError>> findAnimalWithError(List<Animal> animals) {
         return animals.stream()
             .collect(Collectors.toMap(
                 Animal::name,
@@ -205,11 +195,11 @@ public class Tasks {
         Set<ValidationError> errors = new HashSet<>();
 
         errors.addAll(validateName(animal.name()));
+        errors.addAll(validateType(animal.type()));
+        errors.addAll(validateSex(animal.sex()));
         errors.addAll(validateAge(animal.age()));
         errors.addAll(validateHeight(animal.height()));
         errors.addAll(validateWeight(animal.weight()));
-        errors.addAll(validateType(animal.type()));
-        errors.addAll(validateSex(animal.sex()));
 
         return errors;
     }

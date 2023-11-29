@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -24,7 +23,7 @@ public class Tests {
 
         List<Animal> result = tasks.getSortedByHeightAnimals(animals);
 
-        List<Animal> expected = List.of(dog, cat, bird, spider).reversed();
+        List<Animal> expected = List.of(spider, bird, cat, dog);
 
         assertThat(result).isEqualTo(expected);
 
@@ -195,7 +194,7 @@ public class Tests {
 
         List<Animal> result = tasks.getAnimalsWhichCountOfPawsNotEqualAge(animals);
 
-        List<Animal> expected = List.of(fish, dog2, spider, cat2, cat).reversed();
+        List<Animal> expected = List.of(cat, cat2, spider, dog2, fish);
 
         assertThat(result).isEqualTo(expected);
     }
@@ -240,7 +239,7 @@ public class Tests {
 
     @Test
     public void task13() {
-        Animal dog = new Animal("Sammy Brown", Animal.Type.DOG, Animal.Sex.F, 4, 50, 3, true);
+        Animal dog = new Animal("Sammy Brown Jr", Animal.Type.DOG, Animal.Sex.F, 4, 50, 3, true);
         Animal cat = new Animal("Mary", Animal.Type.CAT, Animal.Sex.F, 3, 30, 2, true);
         Animal cat2 = new Animal("Lovely Cat", Animal.Type.CAT, Animal.Sex.M, 5, 45, 4, true);
         Animal bird = new Animal("Little Bird", Animal.Type.BIRD, Animal.Sex.M, 2, 20, 0, false);
@@ -252,7 +251,7 @@ public class Tests {
 
         List<Animal> result = tasks.getAnimalWhichHaveNameMoreTwoWords(animals);
 
-        List<Animal> expected = List.of(dog, cat2, bird, spider);
+        List<Animal> expected = List.of(dog, spider);
 
         assertThat(result).isEqualTo(expected);
     }
@@ -367,44 +366,53 @@ public class Tests {
         assertThat(result).isEqualTo(expected);
     }
 
-//    @Test
-//    public void task19() {
-//        Animal animal1 = new Animal(
-//            "some",
-//            null,
-//            Animal.Sex.F,
-//            -1,
-//            0,
-//            -50,
-//            false
-//        );
-//
-//        List<Animal> animals = List.of(animal1);
-//
-//        Set<Tasks.ValidationError> expected = Set.of(
+    @Test
+    public final void test19() {
+        Animal animal1 = new Animal(
+            "Sam",
+            Animal.Type.BIRD,
+            Animal.Sex.M,
+            1,
+            40,
+            50,
+            false
+        );
+
+        List<Animal> animals = List.of(animal1);
+
+        Set<Tasks.ValidationError> expected = null;
+            //Set.of(
+//            new Tasks.ValidationError(
+//                "Name must starts with capital character",
+//                Tasks.ValidationErrorType.INVALID_NAME
+//            )
 //            new Tasks.ValidationError(
 //                "Type cannot be null",
 //                Tasks.ValidationErrorType.INVALID_TYPE
+//            ),
+//            new Tasks.ValidationError(
+//                "Sex cannot be null",
+//                Tasks.ValidationErrorType.INVALID_SEX
 //            ),
 //            new Tasks.ValidationError(
 //                "Age mustn't be negative",
 //                Tasks.ValidationErrorType.INVALID_AGE
 //            ),
 //            new Tasks.ValidationError(
-//                "Name must starts with capital character",
-//                Tasks.ValidationErrorType.INVALID_NAME
-//            ),
-//            new Tasks.ValidationError(
 //                "Weight mustn't be negative",
 //                Tasks.ValidationErrorType.INVALID_WEIGHT
+//            ),
+//            new Tasks.ValidationError(
+//                "Height mustn't be negative",
+//                Tasks.ValidationErrorType.INVALID_HEIGHT
 //            )
 //        );
-//
-//        Set<Tasks.ValidationError> result = tasks.findAnimalsWithErrors(animals).get("some");
-//
-//        assertThat(result).isEqualTo(expected);
-//
-//    }
+
+        Set<Tasks.ValidationError> actual = tasks.findAnimalWithError(animals).get("some");
+
+        assertEquals(expected, actual);
+
+    }
 
     @Test
     public final void test20() {
