@@ -2,34 +2,30 @@ package edu.hw3;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class Task2 {
     public static List<String> clusterize(String str) {
-        if (str == null || !str.matches("[()]+")) {
-            throw new IllegalStateException("Invalid input!");
-        }
-        List<String> ans = new ArrayList<>();
-        StringBuilder temp = new StringBuilder();
-        int bracketCounter = 0;
+        List<String> result = new ArrayList<>();
+
+        Stack<Character> stack = new Stack<>();
+
+        int begIndex = 0;
+
         for (int i = 0; i < str.length(); i++) {
-            char c = str.charAt(i);
-            if (c == ')') {
-                bracketCounter -= 1;
+            char curChar = str.charAt(i);
+            if (curChar == '(') {
+                stack.push(curChar);
             } else {
-                bracketCounter += 1;
+                stack.pop();
             }
-            temp.append(c);
-            if (bracketCounter == 0) {
-                ans.add(temp.toString());
-                temp.setLength(0);
-            } else if (bracketCounter < 0) {
-                throw new IllegalStateException("Invalid input!");
+            if (stack.empty()) {
+                result.add(str.substring(begIndex, i + 1));
+                begIndex = i + 1;
             }
         }
-        if (bracketCounter != 0) {
-            throw new IllegalStateException("Invalid input!");
-        }
-        return ans;
+
+        return result;
     }
 
 }

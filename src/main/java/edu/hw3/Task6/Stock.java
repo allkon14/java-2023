@@ -1,24 +1,19 @@
 package edu.hw3.Task6;
 
 import java.util.Objects;
+import org.jetbrains.annotations.NotNull;
 
-public class Stock {
+public class Stock implements Comparable<Stock> {
     private int price;
-    //other data
+    private String name;
 
-    public Stock(int price) {
-        setPrice(price);
+    public Stock(String name, int price) {
+        this.name = name;
+        this.price = price;
     }
 
     public int getPrice() {
         return price;
-    }
-
-    public void setPrice(int price) {
-        if (price < 0) {
-            throw new IllegalArgumentException("Price must be greater or equal to zero!");
-        }
-        this.price = price;
     }
 
     @Override public boolean equals(Object o) {
@@ -29,11 +24,20 @@ public class Stock {
             return false;
         }
         Stock stock = (Stock) o;
-        return price == stock.price;
+        return Objects.equals(price, stock.price) && Objects.equals(name, stock.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(price);
+        return Objects.hash(price, name);
+    }
+
+    @Override public String toString() {
+        return "Stock{" + "price=" + price + ", name='" + name + '\'' + '}';
+    }
+
+    @Override
+    public int compareTo(@NotNull Stock o) {
+        return 0;
     }
 }

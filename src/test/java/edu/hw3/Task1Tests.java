@@ -1,7 +1,7 @@
 package edu.hw3;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-public class Tests_hw3_Task1 {
+public class Task1Tests {
     @Test
     void test1() {
         String expectedResult = "Svool dliow!";
