@@ -1,9 +1,9 @@
 package edu.hw3;
 
+import java.util.TreeMap;
 import edu.hw3.Task7.NullTreeMap;
 import org.junit.jupiter.api.Test;
-import java.util.TreeMap;
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class Task7Tests {
     @Test
