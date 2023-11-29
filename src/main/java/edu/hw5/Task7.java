@@ -7,7 +7,7 @@ public class Task7 {
 
     /* содержит не менее 3 символов, причем третий символ равен 0 */
     public static boolean firstRegex(String input) {
-        return input.matches("^.{2}0.*$");
+        return input.matches("^[01]{2}0[01]*$");
     }
 
     /* начинается и заканчивается одним и тем же символом */

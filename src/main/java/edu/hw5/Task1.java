@@ -25,15 +25,5 @@ public class Task1 {
         long minutes = duration.toMinutesPart();
         return hours + "ч " + minutes + "м";
     }
-
-    public static void main(String[] args) {
-        List<String> sessions = List.of(
-            "2022-03-12, 20:20 - 2022-03-12, 23:50",
-            "2022-04-01, 21:30 - 2022-04-02, 01:20"
-        );
-
-        Duration averageDuration = calculateAverageSessionDuration(sessions);
-        System.out.println(formatDuration(averageDuration));
-    }
 }
 
