@@ -1,8 +1,7 @@
 package edu.hw3;
 
-import java.util.Comparator;
-
 import java.util.TreeMap;
+import java.util.Comparator;
 
 public class NullTreeMap<K, V> extends TreeMap<K, V> {
     private static final Comparator<Comparable<Object>> NULL_COMPARATOR = new NullComparator();
@@ -11,6 +10,7 @@ public class NullTreeMap<K, V> extends TreeMap<K, V> {
         super(getComparator());
     }
 
+    @SuppressWarnings("unchecked")
     private static <M> Comparator<M> getComparator() {
         return (Comparator<M>) NULL_COMPARATOR;
     }
