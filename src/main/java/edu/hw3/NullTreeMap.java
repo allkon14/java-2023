@@ -1,4 +1,4 @@
-package edu.hw3.Task7;
+package edu.hw3;
 
 import java.util.Comparator;
 
@@ -11,8 +11,8 @@ public class NullTreeMap<K, V> extends TreeMap<K, V> {
         super(getComparator());
     }
 
-    private static <T> Comparator<T> getComparator() {
-        return (Comparator<T>) NULL_COMPARATOR;
+    private static <M> Comparator<M> getComparator() {
+        return (Comparator<M>) NULL_COMPARATOR;
     }
 
     private final static class NullComparator implements Comparator<Comparable<Object>> {
