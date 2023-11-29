@@ -4,8 +4,6 @@ import edu.project1.Players.ConsolePlayer;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public final class Main {
 
